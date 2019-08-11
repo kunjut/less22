@@ -22,3 +22,16 @@ get '/contacts' do
 	@title = 'Контакты'
 	erb :contacts
 end
+
+post '/visit' do
+	@title = 'Записаться'
+	@username = params[:username]
+	@phonenumber = params[:phonenumber]
+	@datetime = params[:datetime]
+
+	@f = File.open './public/users.txt','a'
+	@f.write "username: #{@username}; phonenumber: #{@phonenumber}; datetime: #{@datetime}"
+	@f.close
+
+	erb :visit
+end
