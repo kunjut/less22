@@ -35,3 +35,16 @@ post '/visit' do
 
 	erb :visit
 end
+
+post '/contacts' do
+	@title = 'Контакты'
+	
+	@email = params[:email]
+	@usermessage = params[:usermessage]
+
+	@f = File.open './public/contacts.txt','a'
+	@f.write "e-mail: #{@email}; message: #{@usermessage}"
+	@f.close
+
+	erb :contacts
+end
