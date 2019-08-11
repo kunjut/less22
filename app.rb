@@ -9,6 +9,16 @@ get '/' do
 end
 
 get '/about' do
-	@title = 'About'
+	@title = 'О нас'
 	erb :about
+end
+
+get '/visit' do
+	@title = 'Записаться'
+	erb :visit
+end
+
+get '/contacts' do
+	@title = 'Контакты'
+	erb :contacts
 end
