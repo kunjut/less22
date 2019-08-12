@@ -28,9 +28,10 @@ post '/visit' do
 	@username = params[:username]
 	@phonenumber = params[:phonenumber]
 	@datetime = params[:datetime]
+	@master = params[:master]
 
 	@f = File.open './public/users.txt','a'
-	@f.write "username: #{@username}; phonenumber: #{@phonenumber}; datetime: #{@datetime}"
+	@f.write "username: #{@username}; phonenumber: #{@phonenumber}; datetime: #{@datetime}; master: #{@master}\n"
 	@f.close
 
 	erb :visit
@@ -43,7 +44,7 @@ post '/contacts' do
 	@usermessage = params[:usermessage]
 
 	@f = File.open './public/contacts.txt','a'
-	@f.write "e-mail: #{@email}; message: #{@usermessage}"
+	@f.write "e-mail: #{@email}; message: #{@usermessage}\n"
 	@f.close
 
 	erb :contacts
