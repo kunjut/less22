@@ -23,6 +23,12 @@ get '/contacts' do
 	erb :contacts
 end
 
+get '/cabin' do
+	@title = 'Кабинет'
+	@subhead = 'Для входа введите свои данные'
+	erb :cabin
+end
+
 post '/visit' do
 	@title = 'Записаться'
 	@username = params[:username]
@@ -48,4 +54,25 @@ post '/contacts' do
 	@f.close
 
 	erb :contacts
+end
+
+post '/cabin' do
+	@title = 'Личный кабинет'
+	@subhead = 'Для входа введите свои данные'
+		
+	@username = params[:username]
+	@password = params[:password]
+
+	if @username == '1' && @password == '1'
+		@subhead = 'Статистика по клиентам'
+	
+		@f_users = File.open './public/users.txt','r'
+		@f_contacts = File.open './public/contacts.txt','r'
+		
+		erb :stata
+	else
+		@subhead = 'Попробуйте еще раз'
+		erb :cabin
+	end
+	
 end
